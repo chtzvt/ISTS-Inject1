@@ -9,6 +9,9 @@
 #include <stdlib.h>
 #include "bst.h"
 
+#define POSTORDER 1
+#define PREORDER 2
+#define INORDER 3
 //Traverses the tree and places the new node in the
 //correct place
 static void place_node(TreeNode* root, TreeNode* newNode){
@@ -74,7 +77,7 @@ void build_tree(TreeNode** root, const int elements[], const int count){
 
 //Recursive function to traverse in a
 //preorder, inorder, or postorder fashion
-void traverse(const TreeNode* root, const TraversalType type){
+void traverse(const TreeNode* root, int type){
 	
 	if(root == NULL){
 		return;
@@ -110,7 +113,7 @@ void cleanup_tree(TreeNode* root){
 }
 
 
-int main(int argc, char argv[]){
+int main(int argc, char* argv[]){
 
     //John, is this how I do arguments in C? Why can't we use Python?
     if(argc < 2){
@@ -118,7 +121,7 @@ int main(int argc, char argv[]){
         printf("usage: ./bst size\n\tsize - number of elements in the tree\n");
         return 1;
     }
-
+    int i;
     int count = atoi(argv[1]);
     int values[count];
 
@@ -130,12 +133,12 @@ int main(int argc, char argv[]){
 
     printf("Enter %d integer values to place in tree:\n", count);
  
-    for(int i = 0; i < count; i++){
+    for(i = 0; i < count; i++){
         scanf("%d", &values[i]);
     }
 
     printf("Input values:\n");
-    for(int i = 1; i < count; i++){
+    for(i = 1; i < count; i++){
         printf("%d\n", values[i]);
     }
     
@@ -143,13 +146,13 @@ int main(int argc, char argv[]){
     build_tree(&rootNode, values, count); 
 
     printf("Inorder:\n");
-    traverse(rootNode, PREORDER)
+    traverse(rootNode, PREORDER);
 
     printf("Preorder:\n");
-    traverse(rootNode, INORDER)
+    traverse(rootNode, INORDER);
 
     printf("Postorder:\n");
-    traverse(rootNode, POSTORDER)
+    traverse(rootNode, POSTORDER);
 
     cleanup_tree(rootNode);
 

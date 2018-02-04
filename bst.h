@@ -40,7 +40,7 @@ void build_tree(TreeNode** root, const int elements[], const int count);
 /// args -
 ///        root - a pointer to the root of the tree to traverse
 ///        type - the traversal type
-void traverse(const TreeNode* root, const TraversalType type);
+void traverse(const TreeNode* root, int type);
 
 /// cleanup_tree()
 ///    Cleanup all memory associated with the nodes on the heap.
