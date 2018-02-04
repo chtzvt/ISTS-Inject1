@@ -6,3 +6,6 @@ all: $(TARGETS)
 
 bst.o: bst.c
 	$(GCC) $< -o $@ -w
+
+test: bst.o
+	./bst.o 5 < input.txt
